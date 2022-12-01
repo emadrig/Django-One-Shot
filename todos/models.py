@@ -20,7 +20,6 @@ class TodoItem(models.Model):
         "TodoList",
         related_name="items",
         on_delete=models.CASCADE,
-        null=True
     )
 
     # def __str__(self):

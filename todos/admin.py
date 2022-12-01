@@ -9,9 +9,7 @@ class TodoListAdmin(admin.ModelAdmin):
         "id",
     )
 
+
 @admin.register(TodoItem)
 class TodoItemAdmin(admin.ModelAdmin):
-    list_display = (
-        "task",
-        "due_date"
-    )
+    list_display = ("task", "due_date")
