@@ -33,7 +33,19 @@ def todo_list_create(request):
     return render(request, "todos/create.html", context)
 
 
-# def todo_list_update(request, id):
-#     updated_list = get_object_or_404(TodoList, id=id)
-#     if request.method == "POST":
-#         form - TopdoListFor
+def todo_list_update(request, id):
+    todo_list = get_object_or_404(TodoList, id=id)
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=todo_list)
+        if form.is_valid():
+            list = form.save()
+
+            return redirect("todo_list_detail", id=list.id)
+    else:
+        form = TodoForm(instance=todo_list)
+
+    context = {
+        "todo_object": todo_list,
+        "form": form,
+    }
+    return render(request, "todos/edit.html", context)
