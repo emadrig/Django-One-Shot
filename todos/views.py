@@ -17,17 +17,23 @@ def todo_list_detail(request, id):
     return render(request, "todos/todo_detail.html", context)
 
 
-def create_todo(request):
+def todo_list_create(request):
     if request.method == "POST":
         form = TodoForm(request.POST)
         if form.is_valid():
-            form.save()
+            list = form.save()
 
-            return redirect("todo_list_list")
-        else:
-            form = TodoForm()
+            return redirect("todo_list_detail", id=list.id)
+    else:
+        form = TodoForm()
 
-        context = {
-            "form": form,
-        }
-        return render(request, "todo/create.html", context)
+    context = {
+        "form": form,
+    }
+    return render(request, "todos/create.html", context)
+
+
+# def todo_list_update(request, id):
+#     updated_list = get_object_or_404(TodoList, id=id)
+#     if request.method == "POST":
+#         form - TopdoListFor
