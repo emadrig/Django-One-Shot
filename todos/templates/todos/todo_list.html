@@ -12,8 +12,14 @@
         <div>
             <h1>My Lists</h1>
         </div>
+        <p>
+            <a href={% url 'todo_list_create' %} > Create a new list </a>
+        </p>
 
-        <a href={% url 'todo_list_create' %} > Create a new list </a>
+        <p>
+            <a href={% url 'todo_item_create' %} > Create a new item </a>
+        </p>
+
         <table>
             <thead>
                 <tr>
