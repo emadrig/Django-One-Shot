@@ -24,7 +24,10 @@
             <tbody>
                 {% for todo in todo_list_list %}
                 <tr>
-                    <td>{{todo.name}}</td>
+                    <td>
+                        <a href="{% url 'todo_list_detail' todo.id %}">{{todo.name}}</a>
+                    </td>
+                    <td>{{todo.items.count}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
